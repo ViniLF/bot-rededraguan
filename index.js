@@ -5,12 +5,12 @@ const path = require('path');
 
 // Configurações
 const config = {
-    token: 'SEU_TOKEN_AQUI',
-    guildId: 'ID_DO_SEU_SERVIDOR',
-    staffRoleId: 'ID_DO_CARGO_STAFF',
-    ticketCategoryId: 'ID_DA_CATEGORIA_TICKETS', // Categoria onde os tickets serão criados
-    logChannelId: 'ID_DO_CANAL_LOGS',
-    ticketChannelId: 'ID_DO_CANAL_CRIAR_TICKET' // Canal onde o botão de criar ticket ficará
+    token: 'MTM4OTM3NTAxNjcwNDkzNDA2OQ.G2fisD.EyR_N_QF3CZy8BHJzV32gEn5ymYaJ0M_fw0HpM',
+    guildId: '1379427412273664131',
+    staffRoleId: '1379600895301648495',
+    ticketCategoryId: '1380919034194821282', // Categoria onde os tickets serão criados
+    logChannelId: '1380918884512825364',
+    ticketChannelId: '1380928962456195293' // Canal onde o botão de criar ticket ficará
 };
 
 // Cliente do Discord
@@ -43,7 +43,7 @@ function saveTranscript(channelId, messages) {
 
 // Evento quando o bot fica online
 client.once('ready', async () => {
-    console.log(`✅ Bot online como ${client.user.tag}`);
+    console.log(`✅ GG Bot online como ${client.user.tag}`);
     
     // Enviar mensagem com botão para criar ticket
     const guild = client.guilds.cache.get(config.guildId);
