@@ -5,12 +5,12 @@ const path = require('path');
 
 // Configurações
 const config = {
-    token: process.env.BOT_TOKEN,
-    guildId: '1379427412273664131',
-    staffRoleId: '1379600895301648495',
-    ticketCategoryId: '1380919034194821282', // Categoria onde os tickets serão criados
-    logChannelId: '1380918884512825364',
-    ticketChannelId: '1380928962456195293' // Canal onde o botão de criar ticket ficará
+    token: 'SEU_TOKEN_AQUI',
+    guildId: 'ID_DO_SEU_SERVIDOR',
+    staffRoleId: 'ID_DO_CARGO_STAFF',
+    ticketCategoryId: 'ID_DA_CATEGORIA_TICKETS', // Categoria onde os tickets serão criados
+    logChannelId: 'ID_DO_CANAL_LOGS',
+    ticketChannelId: 'ID_DO_CANAL_CRIAR_TICKET' // Canal onde o botão de criar ticket ficará
 };
 
 // Cliente do Discord
@@ -285,4 +285,20 @@ client.on('interactionCreate', async interaction => {
 });
 
 // Login do bot
-client.login(config.token);
+if (!config.token) {
+    console.error('❌ ERRO: Token não encontrado!');
+    console.error('Certifique-se de configurar a variável de ambiente BOT_TOKEN');
+    console.error('Use o comando: .env add BOT_TOKEN=seu_token_aqui');
+    process.exit(1);
+}
+
+console.log('🚀 Tentando fazer login...');
+client.login(config.token).catch(error => {
+    console.error('❌ Erro ao fazer login:', error.message);
+    if (error.code === 'TokenInvalid') {
+        console.error('O token fornecido é inválido. Verifique se:');
+        console.error('1. Copiou o token completo');
+        console.error('2. Não incluiu espaços extras');
+        console.error('3. O token não expirou (gere um novo se necessário)');
+    }
+});
